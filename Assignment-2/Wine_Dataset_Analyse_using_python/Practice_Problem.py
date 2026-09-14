@@ -6,7 +6,7 @@ wine=load_wine()
 df=pd.DataFrame(wine.data,columns=wine.feature_names)
 df["target"]=wine.target
 
-# Basic Data Exploration
+#1. Basic Data Exploration
 
 print("---First Five Rows---")
 print(df.head())
@@ -22,22 +22,19 @@ print(df.isnull().sum())
 
 print("\n---Correlation Matrix---")
 print(df.corr(numeric_only=True))
-#2.Plot Boxplots for all numerical attributes in the Wine dataset to visually identify any potential outliers.
+
+#2. Boxplot
 plt.figure(figsize=(7,5))
-
 sns.boxplot(data=df)
-
 plt.title("Boxplots of All Numerical Attributes")
 plt.xlabel("Numerical Aattributes")
 plt.ylabel("Values")
-
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
 #3. Heat Map
 plt.figure(figsize=(12,8))
-
 sns.heatmap(
     df.corr(numeric_only=True),
     annot =True,
